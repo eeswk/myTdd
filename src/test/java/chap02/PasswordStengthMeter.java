@@ -3,7 +3,7 @@ package chap02;
 public class PasswordStengthMeter {
     public PasswordStength meter(String password) {
         if (password == null || password.isEmpty()) return PasswordStength.INVALID;
-        int metCounts = 0;
+
 
         /*
         if (password.length() < 8) {
@@ -21,9 +21,12 @@ public class PasswordStengthMeter {
         if (containsUpper) metCounts++;
         */
 
+        /* 중복되니 계산 메서드로 추출
         if (password.length() >= 8) metCounts++;
         if (meetsContainingNumberCriteria(password)) metCounts++;
         if (meetsContainingUppercaseCriteria(password)) metCounts++;
+         */
+        int metCounts = getMetCriteriaCounts(password);
 
         /* 중복
         if (lengthEnough && !containsNumber && !containsUpper) {
@@ -52,6 +55,14 @@ public class PasswordStengthMeter {
 
 
 
+    }
+
+    private int getMetCriteriaCounts(String password) {
+        int metCounts = 0;
+        if (password.length() >= 8) metCounts++;
+        if (meetsContainingNumberCriteria(password)) metCounts++;
+        if (meetsContainingUppercaseCriteria(password)) metCounts++;
+        return metCounts;
     }
 
     private boolean meetsContainingUppercaseCriteria(String password) {
