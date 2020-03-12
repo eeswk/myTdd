@@ -15,6 +15,12 @@ public class PasswordStengthMeter {
         if (lengthEnough && !containsNumber && !containsUpper) {
             return PasswordStength.WEAK;
         }
+        if (!lengthEnough && containsNumber && !containsUpper) {
+            return PasswordStength.WEAK;
+        }
+        if (!lengthEnough && !containsNumber && containsUpper) {
+            return PasswordStength.WEAK;
+        }
 
         if (!lengthEnough) {
             return PasswordStength.NORMAL;

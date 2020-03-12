@@ -20,7 +20,7 @@ public class PasswordStengthMeterTest {
     }
 
     @Test
-    void meetOtherCriteria_exception_for_number_Then_Noraml() {
+    void meetsOtherCriteria_exception_for_number_Then_Noraml() {
         assertStrength("ab!@ABqwr", PasswordStength.NORMAL);
     }
 
@@ -40,8 +40,18 @@ public class PasswordStengthMeterTest {
     }
 
     @Test
-    void meetOnlyLengthCriteria_Then_Weak() {
+    void meetsOnlyLengthCriteria_Then_Weak() {
         assertStrength("abdefghi", PasswordStength.WEAK);
+    }
+
+    @Test
+    void meetsOnlyNumberCriteria_Then_Week() {
+        assertStrength("12345", PasswordStength.WEAK);
+    }
+
+    @Test
+    void meetsOnlyUpperCriteria_Then_Week() {
+        assertStrength("ABCDE", PasswordStength.WEAK);
     }
 
     private void assertStrength(String password, PasswordStength expStr) {
