@@ -36,7 +36,7 @@ public class PasswordStengthMeter {
             return PasswordStength.WEAK;
         }
          */
-        if (metCounts == 1) return PasswordStength.WEAK;
+        if (metCounts <= 1) return PasswordStength.WEAK;
 
         /* 위에와 비슷한 조건
         if (!lengthEnough) {

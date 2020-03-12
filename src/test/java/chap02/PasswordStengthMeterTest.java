@@ -45,13 +45,18 @@ public class PasswordStengthMeterTest {
     }
 
     @Test
-    void meetsOnlyNumberCriteria_Then_Week() {
+    void meetsOnlyNumberCriteria_Then_Weak() {
         assertStrength("12345", PasswordStength.WEAK);
     }
 
     @Test
-    void meetsOnlyUpperCriteria_Then_Week() {
+    void meetsOnlyUpperCriteria_Then_Weak() {
         assertStrength("ABCDE", PasswordStength.WEAK);
+    }
+
+    @Test
+    void meetsNoCriteria_Then_Weak() {
+        assertStrength("abc", PasswordStength.WEAK);
     }
 
     private void assertStrength(String password, PasswordStength expStr) {
