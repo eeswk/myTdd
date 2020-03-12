@@ -128,6 +128,23 @@ public class ExpiryDateCalculatorTest {
     }
     */
 
+    @Test
+    void 첫_납부일과_만료일_일자가_다를때_만원_납부() {
+        PayData payData = PayData.builder()
+                .firstBillingDate(LocalDate.of(2020, 01, 31))
+                .billingDate(LocalDate.of(2020,02, 29))
+                .payAmount(10000)
+                .build();
+        assertExpireDate(payData, LocalDate.of(2020, 03, 31));
+
+        PayData payData2 = PayData.builder()
+                .firstBillingDate(LocalDate.of(2020, 01, 30))
+                .billingDate(LocalDate.of(2020,02, 29))
+                .payAmount(10000)
+                .build();
+        assertExpireDate(payData2, LocalDate.of(2020, 03, 30));
+    }
+
     private void assertExpireDate(PayData payData, LocalDate expectedExpireDate) {
         ExpiryDateCalculator cal = new ExpiryDateCalculator();
         LocalDate expireDate = cal.calculateExpireDate(payData);
