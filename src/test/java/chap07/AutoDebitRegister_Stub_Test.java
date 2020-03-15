@@ -24,4 +24,12 @@ public class AutoDebitRegister_Stub_Test {
         RegisterResult result = register.register(req);
         assertEquals(CardValidity.INVALID, result.getValidity());
     }
+
+    @Test
+    void theftCard() {
+        stubValidator.setTheftNo("1234567890");
+        AutoDebitReq req = new AutoDebitReq("user2", "1234567890");
+        RegisterResult result = register.register(req);
+        assertEquals(CardValidity.THEFT, result.getValidity());
+    }
 }
