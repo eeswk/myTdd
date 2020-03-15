@@ -16,4 +16,12 @@ public class AutoDebitInfo {
     public void changeCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public String getUsrId() {
+        return userId;
+    }
 }
