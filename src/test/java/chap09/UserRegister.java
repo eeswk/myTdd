@@ -18,6 +18,10 @@ public class UserRegister {
         this.emailNotifier = emailNotifier;
     }
 
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     @Transactional
     public void register(String id, String pw, String email) {
         if (passwordChecker.checkPasswordWeak(pw)) {
