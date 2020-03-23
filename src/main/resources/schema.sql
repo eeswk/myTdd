@@ -7,6 +7,21 @@ CREATE TABLE user (
 
 );
 
+CREATE TABLE survey (
+  id INT(11) PRIMARY KEY,
+  respondentId INT(11) NULL
+
+);
+
+CREATE TABLE respondent (
+  respondentId INT(11) PRIMARY KEY,
+  answerId INT(11) NULL
+);
+
+CREATE TABLE answer (
+  id INT(11) PRIMARY KEY
+);
+
 /*use test;
 
 drop table user;

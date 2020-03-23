@@ -33,7 +33,6 @@ public class CardNumberValidator {
                 .build();
 
         try {
-            System.out.println(request.bodyPublisher());
             HttpResponse<String> response = httpClient.send(request, BodyHandlers.ofString());
             switch (response.body()) {
                 case "ok": return CardValidity.VALID;
@@ -53,5 +52,7 @@ public class CardNumberValidator {
     public static void main(String[] args) {
         CardNumberValidator test = new CardNumberValidator("http://localhost:3000");
         System.out.println(test.validate("1234"));
+        System.out.println(test.validate("9999"));
+        System.out.println(test.validate("12345"));
     }
 }
