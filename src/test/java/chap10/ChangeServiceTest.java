@@ -13,7 +13,8 @@ public class ChangeServiceTest {
     @BeforeEach
     void setUp() {
         changeService = new ChangeUserService(memoryRepository);
-        memoryRepository.save(new User("id", "pwd", new Address("서울", "북부")));
+
+        //memoryRepository.save(new User("id", "pwd", new Address("서울", "북부")));
     }
 
     @Test
@@ -26,6 +27,8 @@ public class ChangeServiceTest {
 
     @Test
     void changeAddress() {
+        memoryRepository.save(new User("id", "pwd", new Address("서울", "북부")));
+
         changeService.changeAddress("id", new Address("서울", "남부"));
         User user = memoryRepository.findById("id");
         assertEquals("남부", user.getAddress().getLocation());
@@ -33,6 +36,7 @@ public class ChangeServiceTest {
 
     @Test
     void changePw() {
+        memoryRepository.save(new User("id", "pwd", new Address("서울", "북부")));
         changeService.changePw("id", "pwd", "newpw");
 
         User user = memoryRepository.findById("id");
@@ -41,6 +45,8 @@ public class ChangeServiceTest {
 
     @Test
     void pwNotMatch() {
+        memoryRepository.save(new User("id", "pwd", new Address("서울", "북부")));
+
         assertThrows(
                 IdPwNotMatchException.class,
                 () -> changeService.changePw("id", "pw2", "newpw")
