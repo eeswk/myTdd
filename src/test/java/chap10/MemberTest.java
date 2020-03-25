@@ -1,5 +1,6 @@
 package chap10;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -10,9 +11,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MemberTest {
 
+    TestBizClock testBizClock = new TestBizClock();
+
+    @AfterEach
+    void restClock() {
+        BizClock.reset();
+    }
+
     @Test
     void notExpried() {
-        LocalDateTime expired = LocalDateTime.of(2020,4, 1, 0, 0 ,0 );
+        testBizClock.setNow(LocalDateTime.of(2020,3, 24, 0, 0 ,0 ));
+        LocalDateTime expired = LocalDateTime.of(2020,3, 25, 0, 0 ,0 );
         Member member = Member.builder().expiryDate(expired).build();
         assertFalse(member.isExpried());
     }
