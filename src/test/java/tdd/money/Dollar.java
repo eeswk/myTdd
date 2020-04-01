@@ -10,7 +10,8 @@ public class Dollar extends Money {
 
     public Money times(int mulitipier) {
         //return Money.dollar(amount * mulitipier);
-        return new Dollar(amount * mulitipier, "USD");
+        return new Dollar(amount * mulitipier, currency);
+
 
     }
 
