@@ -28,7 +28,7 @@ public class Money {
 
     //public abstract Money times(int multiplier);
     public Money times(int mulitplier) {
-        return null;
+        return new Money(amount * mulitplier, currency);
     }
 
     public String currency() {
