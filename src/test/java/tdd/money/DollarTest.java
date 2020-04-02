@@ -140,4 +140,10 @@ public class DollarTest {
         assertEquals(Money.dollar(20), result);
     }
 
+    @Test
+    void testPlusSameCurrencyReturnMoney() {
+        Expression sum = Money.dollar(1).plus(Money.dollar(1));
+        assertTrue(sum instanceof Expression);
+    }
+
 }

@@ -26,4 +26,9 @@ public class Sum implements Expression{
     public Expression plus(Expression addend) {
         return new Sum(this, addend);
     }
+
+    public Expression times(int multipier) {
+        return new Sum(augend.times(multipier), addend.times(multipier));
+
+    }
 }

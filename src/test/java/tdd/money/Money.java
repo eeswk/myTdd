@@ -28,6 +28,7 @@ public class Money implements Expression {
 
     //public abstract Money times(int multiplier);
     public Expression times(int mulitplier) {
+        //return new Money(amount * mulitplier, currency);
         return new Money(amount * mulitplier, currency);
     }
 
@@ -55,6 +56,7 @@ public class Money implements Expression {
         int rate = bank.rate(currency, to);
         return new Money(amount / rate, to);
     }
+
 
 
 }
